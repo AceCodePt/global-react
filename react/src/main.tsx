@@ -3,8 +3,8 @@ import App from './App.tsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import React from 'react';
-import PokemonPage from './pages/PokemonPage.tsx';
-import PokemonAbilityPage from './pages/PokemonAbilityPage.tsx';
+import PokemonPage from './pages/Pokemon/PokemonPage.tsx';
+import PokemonAbilityPage from './pages/PokemonAbility/PokemonAbilityPage.tsx';
 
 const router = createBrowserRouter([
     {

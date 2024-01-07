@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import Pokemon from "../Pokemon"
+import Pokemon from "../../Pokemon"
 
 export default function PokemonPage() {
   const params = useParams()

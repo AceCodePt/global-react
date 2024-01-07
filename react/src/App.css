@@ -41,3 +41,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.row {
+  display: flex;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+}

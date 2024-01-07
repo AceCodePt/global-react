@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PokemonType} from "./PokemonType";
-import PokemonAbility from "./PokemonAbility";
+import { Link } from "react-router-dom";
 
 export default function Pokemon(props: {
   name: string | undefined;
@@ -25,6 +25,7 @@ export default function Pokemon(props: {
       console.log("reached error")
       setIsError(true)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   if(isError){
@@ -62,9 +63,10 @@ export default function Pokemon(props: {
         >
           Drink health potion
         </button>
-        <div>
+        <div className="col">
           {pokemonData.abilities.map((ability, i) => {
-            return <PokemonAbility key={ability.ability.name+i} name={ability.ability.name} />;
+            const abilityId = ability.ability.url.split("/").at(-2);
+            return <Link key={ability.ability.name + i} to={`ability/${abilityId}`}>{ability.ability.name}</Link>;
           })}
         </div>
       </div>
