@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 import PokemonPage from './pages/PokemonPage.tsx';
+import PokemonAbilityPage from './pages/PokemonAbilityPage.tsx';
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/pokemon/:pokemonName/ability/:abilityId",
-        element: <AbilityPage/>
+        element: <PokemonAbilityPage/>
     }
   ]);
 
