@@ -27,9 +27,23 @@ async function main() {
 
 main()
 
-function PromiseAll(promisesArray: Promise<any>){
+function PromiseAll(promisesArray: Array<Promise<any>>){
     return new Promise((resolve, reject) =>{
-        
+        let fulfilled = 0;
+        const resultArray = new Array(promisesArray.length);
+        promisesArray.forEach((promise,i) => {
+            promise
+            .then((value) => {
+                fulfilled++;
+                resultArray[i] = value;
+                if(resultArray.length === fulfilled){
+                    resolve(resultArray)
+                }
+            })
+            .catch((e) => {
+                reject(e)
+            })
+        })
     })
 }
 
