@@ -12,7 +12,6 @@ export default function PokemonLayout() {
         setPokemonList(json);
       });
   }, []);
-  console.log("Layout rendered");
   return (
     <>
       <main>
