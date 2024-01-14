@@ -1,7 +1,7 @@
-import { sCounter as sCounter } from "./CustomHook";
+import { useCounter } from "./CustomHook";
 
 export default function Counter() {
-  const counterLogic = sCounter();
+  const counterLogic = useCounter();
   return (
     <div>
       {counterLogic.count}
