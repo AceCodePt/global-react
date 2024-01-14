@@ -4,6 +4,7 @@ import Pokemon from "./Pokemon";
 import { Link } from "react-router-dom";
 
 function App() {
+
   const [faintedArray, setFaintedArray] = useState<number[]>([]);
   const pokemonNames = ["charizard", "ditto", "pichu"];
   if (faintedArray.length === pokemonNames.length - 1) {
@@ -18,20 +19,20 @@ function App() {
       <a href={"/pokemon"}>pokemon(server)</a>
 
       <div className="row">
-      {pokemonNames.map((pokemonName, i) => {
-        return (
-          <Pokemon
-            key={pokemonName + i}
-            name={pokemonName}
-            healthPoints={5}
-            fainted={() => {
-              if (!faintedArray.includes(i)) {
-                setFaintedArray([...faintedArray, i]);
-              }
-            }}
-          />
-        );
-      })}
+        {pokemonNames.map((pokemonName, i) => {
+          return (
+            <Pokemon
+              key={pokemonName + i}
+              name={pokemonName}
+              healthPoints={5}
+              fainted={() => {
+                if (!faintedArray.includes(i)) {
+                  setFaintedArray([...faintedArray, i]);
+                }
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );
