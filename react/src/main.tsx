@@ -8,6 +8,7 @@ import PokemonAbilityPage from "./pages/PokemonAbility/PokemonAbilityPage.tsx";
 import PokemonLayout from "./pages/PokemonLayout/PokemonLayout.tsx";
 import CounterPage from "./counter/CounterPage.tsx";
 import MainForm from "./pages/Form/MainForm.tsx";
+import Login from "./pages/Login/Login.tsx";
 
 const router = createBrowserRouter([
   {

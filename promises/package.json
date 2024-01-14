@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"dev": "ts-node ./src/index.ts"
+		"dev": "ts-node ./src/index.ts",
+		"dev2": "ts-node ./src/promise.ts"
 	},
 	"devDependencies": {
 		"typescript": "^5.3.3",
