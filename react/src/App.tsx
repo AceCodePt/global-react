@@ -4,7 +4,6 @@ import Pokemon from "./Pokemon";
 import { Link } from "react-router-dom";
 
 function App() {
-
   const [faintedArray, setFaintedArray] = useState<number[]>([]);
   const pokemonNames = ["charizard", "ditto", "pichu"];
   if (faintedArray.length === pokemonNames.length - 1) {
@@ -15,8 +14,8 @@ function App() {
   }
   return (
     <div>
-      <Link to={"/pokemon"}>pokemon(client)</Link>
-      <a href={"/pokemon"}>pokemon(server)</a>
+      <Link to={"/pokemon/ditto"}>pokemon(client)</Link>
+      <a href={"/pokemon/ditto"}>pokemon(server)</a>
 
       <div className="row">
         {pokemonNames.map((pokemonName, i) => {

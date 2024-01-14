@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokemonType} from "./PokemonType";
+import { PokemonType } from "./PokemonType";
 import { Link } from "react-router-dom";
 
 export default function Pokemon(props: {
@@ -8,32 +8,31 @@ export default function Pokemon(props: {
   fainted?: () => void;
 }) {
   const [isError, setIsError] = useState(false);
-  const [pokemonData, setPokemonData] = useState<PokemonType | null>(null)
+  const [pokemonData, setPokemonData] = useState<PokemonType | null>(null);
   const [healthPointsState, setHealthPointState] = useState(props.healthPoints);
-  
+
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${props.name}`)
-    .then(async (response) => {
-      if(!response.ok){
-        setIsError(true)
-        return;
-      }
-      const pokemonData: PokemonType = await response.json();
-      setPokemonData(pokemonData)
-    })
-    .catch(() => {
-      console.log("reached error")
-      setIsError(true)
-    })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  
-  if(isError){
-    return <> Failed to get the pokemon {props.name}</>
+      .then(async (response) => {
+        if (!response.ok) {
+          setIsError(true);
+          return;
+        }
+        const pokemonData: PokemonType = await response.json();
+        setPokemonData(pokemonData);
+      })
+      .catch(() => {
+        console.log("reached error");
+        setIsError(true);
+      });
+  }, [props.name]);
+
+  if (isError) {
+    return <> Failed to get the pokemon {props.name}</>;
   }
 
-  if(pokemonData === null){
-    return <>{props.name} is loading</>
+  if (pokemonData === null) {
+    return <>{props.name} is loading</>;
   }
 
   if (healthPointsState <= 0) {
@@ -44,7 +43,7 @@ export default function Pokemon(props: {
   return (
     <>
       <div>
-      <div>{props.name}</div> 
+        <div>{props.name}</div>
         <button
           onClick={() => {
             // 1-10 Take hit damage
@@ -66,7 +65,11 @@ export default function Pokemon(props: {
         <div className="col">
           {pokemonData.abilities.map((ability, i) => {
             const abilityId = ability.ability.url.split("/").at(-2);
-            return <Link key={ability.ability.name + i} to={`ability/${abilityId}`}>{ability.ability.name}</Link>;
+            return (
+              <Link key={ability.ability.name + i} to={`ability/${abilityId}`}>
+                {ability.ability.name}
+              </Link>
+            );
           })}
         </div>
       </div>
