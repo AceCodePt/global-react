@@ -6,8 +6,13 @@ import React from "react";
 import PokemonPage from "./pages/Pokemon/PokemonPage.tsx";
 import PokemonAbilityPage from "./pages/PokemonAbility/PokemonAbilityPage.tsx";
 import PokemonLayout from "./pages/PokemonLayout/PokemonLayout.tsx";
+import Counter from "./counter/Counter.tsx";
 
 const router = createBrowserRouter([
+  {
+    path: "counter",
+    element: <Counter />,
+  },
   {
     path: "/",
     element: <App />,
