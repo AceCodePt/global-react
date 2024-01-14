@@ -8,9 +8,14 @@ export const useCounter = (changeBy: number = 1) => {
   const decrement = () => {
     setCount((prevCount) => prevCount - changeBy);
   };
+
+  const reset = () => {
+    setCount(0);
+  };
   return {
     count,
     increment,
     decrement,
+    reset,
   };
 };

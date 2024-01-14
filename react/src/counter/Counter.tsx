@@ -1,13 +1,15 @@
-import { useCounter } from "./CustomHook";
-
-export default function Counter() {
-  const counterLogic = useCounter();
+export default function Counter(props: {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+}) {
+  console.log("render regular");
   return (
     <>
       <div>
-        {counterLogic.count}
-        <button onClick={counterLogic.increment}>Increment</button>
-        <button onClick={counterLogic.decrement}>Decrement</button>
+        {props.count}
+        <button onClick={props.increment}>Increment</button>
+        <button onClick={props.decrement}>Decrement</button>
       </div>
     </>
   );
