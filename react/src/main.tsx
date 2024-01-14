@@ -6,12 +6,25 @@ import React from "react";
 import PokemonPage from "./pages/Pokemon/PokemonPage.tsx";
 import PokemonAbilityPage from "./pages/PokemonAbility/PokemonAbilityPage.tsx";
 import PokemonLayout from "./pages/PokemonLayout/PokemonLayout.tsx";
-import Counter from "./counter/Counter.tsx";
+import CounterPage from "./counter/CounterPage.tsx";
+import MainForm from "./pages/Form/MainForm.tsx";
 
 const router = createBrowserRouter([
   {
     path: "counter",
-    element: <Counter />,
+    element: (
+      <>
+        <CounterPage />
+      </>
+    ),
+  },
+  {
+    path: "form",
+    element: (
+      <>
+        <MainForm />
+      </>
+    ),
   },
   {
     path: "/",
