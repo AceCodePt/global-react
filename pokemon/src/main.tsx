@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Pokemon from "./pages/Pokemon.tsx";
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { api } from "./store/api.ts";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +22,8 @@ const routes = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={routes} />
+    <ApiProvider api={api}>
+      <RouterProvider router={routes} />
+    </ApiProvider>
   </React.StrictMode>,
 );
