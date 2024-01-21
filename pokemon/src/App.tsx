@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
 import React from "react";
-import { useGetPokemonListQuery } from "./store/api";
+import { useDeletePokemonMutation, useGetPokemonListQuery } from "./store/api";
 
 function App() {
   const {
@@ -10,6 +10,7 @@ function App() {
     isLoading,
     isSuccess,
   } = useGetPokemonListQuery("");
+  const [deletePokemon] = useDeletePokemonMutation();
 
   if (isLoading) {
     return <>is loading...</>;
@@ -28,8 +29,14 @@ function App() {
               <Link key={i + pokemonItem.id} to={pokemonItem.id}>
                 {pokemonItem.name}
               </Link>
+              <button
+                onClick={() => {
+                  deletePokemon({ pokemonId: pokemonItem.id });
+                }}
+              >
+                Delete
+              </button>
               <br />
-              <button>Delete</button>
             </React.Fragment>
           );
         })}
