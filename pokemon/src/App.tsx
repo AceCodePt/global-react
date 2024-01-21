@@ -29,6 +29,7 @@ function App() {
                 {pokemonItem.name}
               </Link>
               <br />
+              <button>Delete</button>
             </React.Fragment>
           );
         })}

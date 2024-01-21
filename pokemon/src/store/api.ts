@@ -5,6 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
+  tagTypes: ["pokemonDetails"],
   endpoints(build) {
     return {
       getPokemonList: build.query<PokemonListType, {}>({
@@ -16,6 +17,7 @@ export const api = createApi({
         query({ pokemonName }) {
           return { url: "details/" + pokemonName };
         },
+        providesTags: ["pokemonDetails"],
       }),
       updatePokemon: build.mutation<
         void,
@@ -28,6 +30,7 @@ export const api = createApi({
             body: { weight, height },
           };
         },
+        invalidatesTags: ["pokemonDetails"],
       }),
     };
   },
