@@ -1,24 +1,39 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./App.css";
-import { useEffect, useState } from "react";
+import React from "react";
+import { useGetPokemonListQuery } from "./store/api";
 
 function App() {
-  const [pokemonList, setPokemonList] = useState<
-    { id: string; name: string }[]
-  >([]);
-  useEffect(() => {
-    fetch("http://localhost:3000/pokemons").then(async (res) => {
-      const pokemon = await res.json();
-      setPokemonList(pokemon);
-    });
-  }, []);
-  if (pokemonList.length <= 0) {
+  const {
+    data: pokemonList,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useGetPokemonListQuery("");
+
+  if (isLoading) {
     return <>is loading...</>;
   }
-  console.log(pokemonList);
+  if (isError || !isSuccess) {
+    return <> ErrorOccured</>;
+  }
+
   return (
     <>
-      My Pokedex: <Outlet />
+      <div>My Pokedex:</div>
+      <div>
+        {pokemonList.map((pokemonItem, i) => {
+          return (
+            <React.Fragment key={i + pokemonItem.id}>
+              <Link key={i + pokemonItem.id} to={pokemonItem.id}>
+                {pokemonItem.name}
+              </Link>
+              <br />
+            </React.Fragment>
+          );
+        })}
+      </div>
+      <Outlet />
     </>
   );
 }
